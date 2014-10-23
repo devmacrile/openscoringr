@@ -7,8 +7,8 @@
 #'
 #' @param model the model object to be PMML'd and deployed
 #' @param model_name the name of the model to be deployed, defaults to the name of the model object if not provided
-#' @host the address of the server to which to deploy the model
-#' @save indicates whether to keep the generated pmml or not
+#' @param host the address of the server to which to deploy the model
+#' @param save indicates whether to keep the generated pmml or not
 #' @export
 deploy <- function(model, model_name, host, save=FALSE){
   if(missing(model)){
