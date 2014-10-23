@@ -6,10 +6,12 @@ Description: Enables the ability to deploy, manage, and score models
 	in R via the openscoring REST API.
 Depends: R (>= 3.0.2)
 Imports:
-	httr
-	pmml (>= 1.4.2)
-	RCurl
-	plyr
-	stringr
+	httr,
+	pmml (>= 1.4.2),
+	RCurl,
+	plyr,
+	stringr,
+	rjson,
+	jsonlite
 License: GPL (>= 2)
 LazyData: true

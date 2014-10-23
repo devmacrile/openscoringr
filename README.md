@@ -5,7 +5,7 @@ An R wrapper for the openscoring REST API enabling the deployment, management, a
 predictive models with openscoring server.
 
 Requirements:
-*	R (>= 2.7.0) and a collection of packages (pmml, RCurl, ..)
+*	R (>= 2.7.0)
 *	openscoring server
 
 #### Installing the openscoring server  
