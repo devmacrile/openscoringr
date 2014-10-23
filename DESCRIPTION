@@ -1,5 +1,5 @@
 Package: openscoringr
-Title: Deploy and score predictive models with the openscoring server from R.
+Title: Deploy, manage, and score predictive models from R with the openscoring server.
 Version: 0.1
 Authors@R: "Devin Riley <rileyde@umich.edu> [aut, cre]"
 Description: Allows an analyst working in R to deploy models 
