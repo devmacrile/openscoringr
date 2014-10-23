@@ -4,7 +4,7 @@
 #' @param host the address of the openscoring server
 #' @export
 isDeployed <- function(model_name, host){
-  models <- getmodels(host)
+  models <- getModels(host)
   if(model_name %in% models$Id){
     return(TRUE)
   }
