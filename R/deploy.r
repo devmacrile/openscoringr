@@ -5,12 +5,35 @@
 #' and deploys this model to the openscoring server to be
 #' invoked via the REST API.
 #'
-#' @param model_name the name of the model to be deployed
+#' @param model the model object to be PMML'd and deployed
+#' @param model_name the name of the model to be deployed, defaults to the name of the model object if not provided
+#' @host the address of the server to which to deploy the model
+#' @save indicates whether to keep the generated pmml or not
 #' @export
-deploy <- function(model_name){
+deploy <- function(model, model_name, host, save=FALSE){
+  if(missing(model)){
+    stop("You must provide a model in order to deploy!")
+  }
+  if(missing(model_name)){
+    model_name <- deparse(substitute(model))
+  }
 
+  pmml.err.msg <- "Could not convert your model format to valid PMML.  Please
+  ensure you are using a supported model type."
+  tryCatch({model_rep <- pmml(model)},
+           error = function(e){ stop(pmml.err.msg) },
+           exception = function(x){ stop(pmml.err.msg) }
+  )
 
+  fname <- paste(model_name, ".pmml", sep="")
+  saveXML(model_rep, fname)
 
+  url <- paste(host, "/model/", model_name, sep="")
+  PUT(url, body = upload_file("temp.pmml", "text/xml"))
 
+  if(save == FALSE){
+    file.remove(fname)
+  }
+  print("Model successfully deployed.")
 
 }
