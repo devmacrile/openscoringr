@@ -1,13 +1,15 @@
 Package: openscoringr
-Title: Deploy, manage, and score predictive models from R with the openscoring server.
+Title: R wrapper for the openscoring REST API
 Version: 0.1
 Authors@R: "Devin Riley <rileyde@umich.edu> [aut, cre]"
-Description: Allows an analyst working in R to deploy models 
-    into production on an openscoring server, as well as score existing
-    models on new data, without having to leave the R interface.
+Description: Enables the ability to deploy, manage, and score models
+	in R via the openscoring REST API.
 Depends: R (>= 3.0.2)
 Imports:
+	httr
 	pmml (>= 1.4.2)
 	RCurl
+	plyr
+	stringr
 License: GPL (>= 2)
 LazyData: true

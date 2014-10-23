@@ -1,7 +1,8 @@
 openscoringr
 ============
 
-Deploy, manage, and score predictive models from R with openscoring server.
+An R wrapper for the openscoring REST API enabling the deployment, management, and scoring of
+predictive models with openscoring server.
 
 Requirements:
 *	R (>= 2.7.0) and a collection of packages (pmml, RCurl, ..)
