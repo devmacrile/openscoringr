@@ -30,9 +30,11 @@ After a minute, if this is successful, you can execute the built server executab
 	
 which will start up the REST web service (at [http://localhost:8080/openscoring](http://localhost:8080/openscoring ) by default).  
 
-#### Installing the R package  
+#### TODO  
+Incorporate the authentication functionality (simply testing on localhost with no auth for proof-of-concept)
+Add information about how to install R package  
+Add some examples
 
-#### Example
 
 
 
