@@ -3,6 +3,7 @@
 #' Returns a data.frame with information about the deployed models
 #'
 #' @host the address of the openscoring server from which to get model information
+#' @data.type indicates the final R data type for the response (data.frame or list)
 #' @export
 getmodels <- function(host, data.type="data.frame"){
   if(missing(host)){
