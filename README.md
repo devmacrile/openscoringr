@@ -1,7 +1,7 @@
 openscoringr
 ============
 
-Deploy/score predictive models to/from openscoring server via the R environment.
+Deploy, manage, and score predictive models from R with openscoring server.
 
 Requirements:
 *	R (>= 2.7.0) and a collection of packages (pmml, RCurl, ..)
