@@ -4,7 +4,7 @@ Version: 0.1
 Authors@R: "Devin Riley <rileyde@umich.edu> [aut, cre]"
 Description: Allows an analyst working in R to deploy models 
     into production on an openscoring server, as well as score existing
-	models on new data, without having to leave the R interface.
+    models on new data, without having to leave the R interface.
 Depends: R (>= 3.0.2)
-License: What license is it under?
+License: GPL (>= 2)
 LazyData: true
