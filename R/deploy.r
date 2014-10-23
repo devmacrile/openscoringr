@@ -29,7 +29,7 @@ deploy <- function(model, model_name, host, save=FALSE){
   saveXML(model_rep, fname)
 
   url <- paste(host, "/model/", model_name, sep="")
-  PUT(url, body = upload_file("temp.pmml", "text/xml"))
+  PUT(url, body = upload_file(fname, "text/xml"))
 
   if(save == FALSE){
     file.remove(fname)
