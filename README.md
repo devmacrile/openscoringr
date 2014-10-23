@@ -18,7 +18,7 @@ the GitHub repository into the directory of your choice with the following comma
 	git clone https://github.com/jpmml/openscoring.git
 	
 Now, enter the project root directory and build using [Maven](http://maven.apache.org/) (if you need to install,
-just download the appropriate binary and follow the instructions [here](http://maven.apache.org/download.cgi) 
+just download the appropriate binary and follow the instructions [here](http://maven.apache.org/download.cgi)
 ) with the following:  
 
 	mvn clean install
@@ -27,7 +27,7 @@ After a minute, if this is successful, you can execute the built server executab
 
 	java -jar openscoring-server/target/server-executable-1.2-SNAPSHOT.jar
 	
-which will start up the REST web service (at http://localhost:8080/openscoring by default).  
+which will start up the REST web service (at [http://localhost:8080/openscoring](http://localhost:8080/openscoring ) by default).  
 
 #### Installing the R package  
 
