@@ -11,6 +11,14 @@
 #' @keywords score batch
 #' @export
 score <- function(model_name, host, data, mode){
+  if(!isDeployed(model_name, host)){
+    stop(paste("No deployed model named ", model_name, sep=""))
+  }
+  if(class(data) != "data.frame"){
+    stop(paste("The 'data' parameter must have class data.frame
+               (class ", class(data), "provided", sep=""))
+  }
+  #Check data against model schema
 
 
 

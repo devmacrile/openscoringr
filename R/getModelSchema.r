@@ -5,7 +5,7 @@
 #' associated with the model name.
 #'
 #' @param model_name the name of the model for which to retrieve schema
-#' @keywords schema model get
+#' @keywords schema model GET
 #' @export
 getModelSchema <- function(model_name, host){
   if(!isDeployed(model_name, host)){
@@ -15,7 +15,7 @@ getModelSchema <- function(model_name, host){
   url <- paste(host, "/model/",
                model_name, "/schema", sep="")
   schema <- content(GET(url))
-  print(schema)
+  return(schema)
 }
 
 

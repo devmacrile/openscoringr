@@ -12,5 +12,4 @@ isDeployed <- function(model_name, host){
   else{
     return(FALSE)
   }
-
 }
