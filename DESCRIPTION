@@ -8,10 +8,8 @@ Depends: R (>= 3.0.2)
 Imports:
 	httr,
 	pmml (>= 1.4.2),
-	RCurl,
 	plyr,
 	stringr,
-	rjson,
 	jsonlite
 License: GPL (>= 2)
 LazyData: true
