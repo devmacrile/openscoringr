@@ -4,6 +4,7 @@
 #'
 #' @param host the address of the openscoring server from which to get model information
 #' @param data.type indicates the final R data type for the response (data.frame or list)
+#' @keywords models get list
 #' @export
 getModels <- function(host, data.type="data.frame"){
   if(missing(host)){
