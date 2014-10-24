@@ -8,8 +8,14 @@
 #' @keywords schema model get
 #' @export
 getModelSchema <- function(model_name, host){
+  if(!isDeployed(model_name, host)){
+    stop(paste("No deployed model named ", model_name, sep=""))
+  }
 
-
-
-
+  url <- paste(host, "/model/",
+               model_name, "/schema", sep="")
+  schema <- content(GET(url))
+  print(schema)
 }
+
+
