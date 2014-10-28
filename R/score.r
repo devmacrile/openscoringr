@@ -33,13 +33,14 @@ score <- function(data, model_name, host, mode="single"){
   data <- cbind(id, data)
   if(nrow(data) == 1){
     # Single prediction
-    request <- toJSON(list("id" = "obs1", "arguments" = data))
+    request <- specialJSON(data)
     print(request)
     url <- paste(host, "/model/", model_name, sep="")
-    response <- POST(url, accept_json())
+    print(url)
+    response <- POST(url, body = request, content_type("application/json"))
     print(response)
-    pred <- fromJSON(response)
-    return(pred)
+    #pred <- fromJSON(response)
+    #return(pred)
   }
   else{
     # Batch prediction

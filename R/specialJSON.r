@@ -21,11 +21,12 @@ specialJSON <- function(x){
     stop("Argument 'x' must be a data frame with at least one row!")
   }
 
-  if(dim(x) == 1){
-
+  if(nrow(x) == 1){
+    request <- paste('{"id" : "obs-1", "arguments" : ',
+                     toJSON(unbox(x)), '}', sep='')
+    return(request)
 
   }
-
 
 
 }
