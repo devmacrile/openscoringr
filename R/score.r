@@ -34,19 +34,13 @@ score <- function(data, model_name, host, mode="single"){
   if(nrow(data) == 1){
     # Single prediction
     request <- specialJSON(data)
-    print(request)
     if(!validate(request)){
       stop("Not proper JSON!")
     }
     url <- paste(host, "/model/", model_name, sep="")
-    write(request, "temp.json")
-    print(url)
     response <- POST(url, body = request,
-                     add_headers("Content-Type" = "application/json"),
-                     verbose())
-    print(response)
-    #pred <- fromJSON(response)
-    #return(pred)
+                     add_headers("Content-Type" = "application/json"))
+    return(content(response))
   }
   else{
     # Batch prediction
