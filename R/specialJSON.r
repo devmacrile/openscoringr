@@ -16,9 +16,14 @@
 #' @param x is a data.frame
 #' @keywords JSON
 #' @export
-specialJSON(x){
+specialJSON <- function(x){
   if(!is.data.frame(x) | dim(x)[1] == 0){
     stop("Argument 'x' must be a data frame with at least one row!")
+  }
+
+  if(dim(x) == 1){
+
+
   }
 
 
