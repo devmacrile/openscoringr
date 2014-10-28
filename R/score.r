@@ -13,7 +13,7 @@
 #' @param mode either 'single' or 'batch'
 #' @keywords score batch
 #' @export
-score <- function(model_name, host, data, mode="single"){
+score <- function(data, model_name, host, mode="single"){
   if(!isDeployed(model_name, host)){
     stop(paste("No deployed model named ", model_name, sep=""))
   }
@@ -29,17 +29,21 @@ score <- function(model_name, host, data, mode="single"){
     stop(paste("The 'data' field names do not match the activeFields of the model!"))
   }
 
-  id <-
-  data <-
+  id <- paste("obs-", 1:nrow(data))
+  data <- cbind(id, data)
   if(nrow(data) == 1){
     # Single prediction
-    request <- toJSON()
+    request <- toJSON(list("id" = "obs1", "arguments" = data))
+    print(request)
+    url <- paste(host, "/model/", model_name, sep="")
+    response <- POST(url, accept_json())
+    print(response)
+    pred <- fromJSON(response)
+    return(pred)
   }
   else{
     # Batch prediction
 
   }
-
-
 
 }
