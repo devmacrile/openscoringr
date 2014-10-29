@@ -49,7 +49,8 @@ score <- function(data, model_name, host){
                  "/batch", sep="")
     response <- POST(url, body = request,
                      add_headers("Content-Type" = "application/json"))
-    pred <- as.data.frame(content(response))
+    response <- content(response)
+    pred <- do.call("rbind", lapply(response, data.frame))
     result <- cbind(data, pred[, -1])
     return(result)
   }
