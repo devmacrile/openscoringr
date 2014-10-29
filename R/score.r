@@ -3,17 +3,17 @@
 #' Takes feature data and returns a prediction response by applying
 #' the selected model to the data provided.  This can be called
 #' in either "single prediction" mode (i.e. one observation of features,
-#' one set of prediction values returned).
+#' one set of prediction values returned), or "batch" mode where
+#' prediction responses are returned for a collection of observations.
 #'
 #' @param model_name name of the model used to score
-#' @param host address of openscoring server
-#' @param data data on which to execute model.  Must be a data.frame and
+#' @param host Address of openscoring server (i.e. "http://localhost:8080/openscoring")
+#' @param data Data on which to execute model.  Must be a data.frame and
 #' the colnames must match the activeFields of model_name.
 #' Run getModelSchema(model_name)$activeFields to get the active
-#' @param mode either 'single' or 'batch'
 #' @keywords score batch
 #' @export
-score <- function(data, model_name, host, mode="single"){
+score <- function(data, model_name, host){
   if(!isDeployed(model_name, host)){
     stop(paste("No deployed model named ", model_name, sep=""))
   }
@@ -29,22 +29,29 @@ score <- function(data, model_name, host, mode="single"){
     stop(paste("The 'data' field names do not match the activeFields of the model!"))
   }
 
-  id <- paste("obs-", 1:nrow(data))
-  data <- cbind(id, data)
+  request <- specialJSON(data)
+  if(!validate(request)){
+    stop("Not proper JSON!")
+  }
+
   if(nrow(data) == 1){
     # Single prediction
-    request <- specialJSON(data)
-    if(!validate(request)){
-      stop("Not proper JSON!")
-    }
     url <- paste(host, "/model/", model_name, sep="")
     response <- POST(url, body = request,
                      add_headers("Content-Type" = "application/json"))
-    return(content(response))
+    pred <- as.data.frame(content(response))
+    result <- cbind(data, pred[, -1])
+    return(result)
   }
   else{
     # Batch prediction
-
+    url <- paste(host, "/model/", model_name,
+                 "/batch", sep="")
+    response <- POST(url, body = request,
+                     add_headers("Content-Type" = "application/json"))
+    pred <- as.data.frame(content(response))
+    result <- cbind(data, pred[, -1])
+    return(result)
   }
 
 }

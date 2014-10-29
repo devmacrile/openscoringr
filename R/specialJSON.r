@@ -12,6 +12,8 @@
 #'    }
 #' }
 #'
+#' The batch format is a JSON array of these objects.
+#'
 #'
 #' @param x is a data.frame
 #' @keywords JSON
@@ -24,9 +26,18 @@ specialJSON <- function(x){
   if(nrow(x) == 1){
     request <- paste('{"id" : "obs-1", "arguments" : ',
                      toJSON(unbox(x)), '}', sep='')
-    return(request)
-
+  }
+  else{
+    for(i in 1:nrow(x)){
+      if(i == 1) request <- specialJSON(x[i, ])
+      else{
+        obj <- specialJSON(x[i, ])
+        request <- paste(request, obj, sep=",")
+      }
+    }
+    request <- paste("[", request, "]", sep="")
   }
 
+  return(request)
 
 }
