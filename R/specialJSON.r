@@ -13,7 +13,24 @@
 #' }
 #'
 #' The batch format is a JSON array of these objects.
-#'
+#' [{
+#'    "id" : "example-001",
+#'    "arguments" : {
+#'      "Sepal_Length" : 5.1,
+#'      "Sepal_Width" : 3.5,
+#'      "Petal_Length" : 1.4,
+#'      "Petal_Width" : 0.2
+#'    }
+#' },
+#' {
+#'    "id" : "example-001",
+#'    "arguments" : {
+#'      "Sepal_Length" : 4.9,
+#'      "Sepal_Width" : 3,
+#'      "Petal_Length" : 1.4,
+#'      "Petal_Width" : 0.2
+#'    }
+#' }]
 #'
 #' @param x is a data.frame
 #' @keywords JSON
