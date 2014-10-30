@@ -1,8 +1,8 @@
-#' Deletes the model from the openscoring server
+#' Deletes the model from the openscoring server.
 #'
 #' @param model_name name of the model to delete
 #' @param host address of server from which to remove model
-#' @keywords delete
+#' @aliases delete
 #' @export
 deleteModel <- function(model_name, host){
   if(!isDeployed(model_name, host)){

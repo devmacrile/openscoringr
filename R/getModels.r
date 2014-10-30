@@ -1,10 +1,10 @@
-#' Gets a list of available models on the openscoring server
+#' Gets a list of available models on the openscoring server.
 #'
 #' Returns a data.frame with information about the deployed models
 #'
 #' @param host the address of the openscoring server from which to get model information
 #' @param data.type indicates the final R data type for the response (data.frame or list)
-#' @keywords models GET list
+#' @aliases get models
 #' @export
 getModels <- function(host, data.type="data.frame"){
   if(missing(host)){

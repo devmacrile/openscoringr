@@ -1,4 +1,4 @@
-#' Score a deployed model on new data
+#' Scores new data on a deployed model.
 #'
 #' Takes feature data and returns a prediction response by applying
 #' the selected model to the data provided.  This can be called
@@ -11,7 +11,7 @@
 #' @param data Data on which to execute model.  Must be a data.frame and
 #' the colnames must match the activeFields of model_name.
 #' Run getModelSchema(model_name)$activeFields to get the active
-#' @keywords score batch
+#' @aliases predict
 #' @export
 score <- function(data, model_name, host){
   if(!isDeployed(model_name, host)){
@@ -54,5 +54,4 @@ score <- function(data, model_name, host){
     result <- cbind(data, pred[, -1])
     return(result)
   }
-
 }
