@@ -20,7 +20,13 @@ getModels <- function(host, data.type="data.frame"){
   url <- paste(host, "/model", sep="")
   models <- content(GET(url))
 
+  if(length(models) == 0){
+    # No models to display
+    stop("No models deployed!")
+  }
+
   if(data.type == "list"){
+    # Already in list format
     return(models)
   }
 
@@ -30,5 +36,5 @@ getModels <- function(host, data.type="data.frame"){
   mdl.char <- unlist(models)
   df <- data.frame(mdl.char[id.index], mdl.char[summ.idx])
   colnames(df) <- c("Id", "Summary")
-  return(df)
+  df
 }

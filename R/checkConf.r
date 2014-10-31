@@ -4,7 +4,12 @@
 #' a character list containing authentication (username, password) as well
 #' as the host address for the desired openscoring server.
 checkConf <- function(){
-
+  tryCatch({
+    AUTH <- get("conf")
+  }, error = function(e) {
+    stop("You must define a 'conf' object: conf <- c(username, password, host)")
+  })
+  env <- AUTH[["host"]]
 
 
 }
