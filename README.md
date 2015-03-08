@@ -38,7 +38,38 @@ Use Hadley's [devtools](https://github.com/hadley/devtools) package to install d
 	install_github("devmacrile/openscoringr")
 	
 	
-See the vignette for example usage.
+#### Example Usage  
+
+	library(openscoringr)
+	library(randomForest)
+	data(iris)
+	
+	# Construct a dummy predictive model
+	in.training <- sample(1:nrow(iris), 125)
+	iris.train <- iris[in.training, ]
+	iris.test <- iris[-in.training, ]
+	iris.rf <- randomForest(Species ~ ., data=iris)
+	
+	# Deploy a model to openscoring
+	OPENSCORING.SERVER <- "http://localhost:8080/openscoring"
+	deploy(iris.rf, "iris-rf", OPENSCORING.SERVER)
+	
+	# Get a list of deployed models
+	getModels(openscoring.server)  # Will have 'iris-rf' deployed
+	isDeployed("iris-rf", OPENSCORING.SERVER)  # Will return TRUE
+	
+	# Get schema for individual model
+	getModelSchema("iris-rf", OPENSCORING.SERVER)
+	
+	# Score new data on deployed model
+	predictionss <- score(iris.test, "iris-rf", OPENSCORING.SERVER)
+	
+	# Remove model from deployment
+	deleteModel("iris-rf", OPENSCORING.SERVER)
+	
+	
+	
+	
 
 
 
