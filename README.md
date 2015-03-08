@@ -1,4 +1,4 @@
-openscoringr
+openscoringr		[![Image not found!](https://travis-ci.org/devmacrile/openscoringr.svg?branch=master)](https://travis-ci.org/devmacrile/openscoringr)
 ============
 
 An R wrapper for the openscoring REST API enabling the deployment, management, and scoring of
