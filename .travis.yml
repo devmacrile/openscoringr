@@ -3,10 +3,13 @@ language: r
 # Be strict when checking our package
 warnings_are_errors: true
 
+before_install:
+  - git clone https://github.com/jpmml/openscoring.git
+  - cd openscoring
+  - mvn clean install
+  - java -jar openscoring-server/target/server-executable-1.2-SNAPSHOT.jar
+
 # System dependencies for HTTP calling
-apt_packages:
- - libcurl4-openssl-dev
- - libxml2-dev
 r_binary_packages:
  - testthat
 

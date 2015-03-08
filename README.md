@@ -30,11 +30,16 @@ After a minute, if this is successful, you can execute the built server executab
 	
 which will start up the REST web service (at [http://localhost:8080/openscoring](http://localhost:8080/openscoring ) by default).  
 
-#### TODO  
-Incorporate the authentication functionality (simply testing on localhost with no auth for proof-of-concept)  
-Add information about how to install R package  
-Use the model statistics in some way (standard ggplot2 graphs?)  
-Add more examples
+#### Installing the R Package  
+Use Hadley's [devtools](https://github.com/hadley/devtools) package to install directly from GitHub:
+
+	install.packages("devtools")
+	library(devtools)
+	install_github("devmacrile/openscoringr")
+	
+	
+See the vignette for example usage.
+
 
 
 

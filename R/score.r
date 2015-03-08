@@ -22,6 +22,7 @@ score <- function(data, model_name, host){
                "(class '", class(data), "' provided)", sep=""))
   }
 
+  # Get model schema to ensure features are present in new data
   schema <- getModelSchema(model_name, host)
   active_fields <- unlist(schema$activeFields)
   clnms <- colnames(data)
@@ -29,17 +30,18 @@ score <- function(data, model_name, host){
     stop(paste("The 'data' field names do not match the activeFields of the model!"))
   }
 
+  # Jsonify the new data
   request <- specialJSON(data)
   if(!validate(request)){
     stop("Not proper JSON!")
   }
-
+  
   if(nrow(data) == 1){
     # Single prediction
     url <- paste(host, "/model/", model_name, sep="")
-    response <- POST(url, body = request,
+    response <- httr::POST(url, body = request,
                      add_headers("Content-Type" = "application/json"))
-    pred <- as.data.frame(content(response))
+    pred <- as.data.frame(httr::content(response))
     result <- cbind(data, pred[, -1])
     return(result)
   }
@@ -47,9 +49,9 @@ score <- function(data, model_name, host){
     # Batch prediction
     url <- paste(host, "/model/", model_name,
                  "/batch", sep="")
-    response <- POST(url, body = request,
+    response <- httr::POST(url, body = request,
                      add_headers("Content-Type" = "application/json"))
-    response <- content(response)
+    response <- httr::content(response)
     pred <- do.call("rbind", lapply(response, data.frame))
     result <- cbind(data, pred[, -1])
     return(result)

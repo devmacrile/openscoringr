@@ -28,7 +28,7 @@ deploy <- function(model, model_name, host, save=FALSE){
 
   pmml.err.msg <- "Could not convert your model format to valid PMML.  Please
   ensure you are using a supported model type."
-  tryCatch({model_rep <- pmml(model)},
+  tryCatch({model_rep <- pmml::pmml(model)},
            error = function(e){ stop(pmml.err.msg) },
            exception = function(x){ stop(pmml.err.msg) }
   )
@@ -37,7 +37,7 @@ deploy <- function(model, model_name, host, save=FALSE){
   saveXML(model_rep, fname)
 
   url <- paste(host, "/model/", model_name, sep="")
-  PUT(url, body = upload_file(fname, "text/xml"))
+  httr::PUT(url, body = upload_file(fname, "text/xml"))
 
   if(save == FALSE){
     file.remove(fname)

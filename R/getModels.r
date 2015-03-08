@@ -18,7 +18,7 @@ getModels <- function(host, data.type="data.frame"){
   }
 
   url <- paste(host, "/model", sep="")
-  models <- content(GET(url))
+  models <- httr::content(httr::GET(url))
 
   if(length(models) == 0){
     # No models to display

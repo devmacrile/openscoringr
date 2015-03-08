@@ -13,7 +13,7 @@ getModelSchema <- function(model_name, host){
 
   url <- paste(host, "/model/",
                model_name, "/schema", sep="")
-  schema <- content(GET(url))
+  schema <- httr::content(httr::GET(url))
   return(schema)
 }
 

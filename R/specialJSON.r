@@ -11,7 +11,7 @@ specialJSON <- function(x){
 
   if(nrow(x) == 1){
     request <- paste('{"id" : "obs-1", "arguments" : ',
-                     toJSON(unbox(x)), '}', sep='')
+                     jsonlite::toJSON(jsonlite::unbox(x)), '}', sep='')
   }
   else{
     for(i in 1:nrow(x)){

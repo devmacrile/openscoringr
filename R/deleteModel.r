@@ -21,5 +21,5 @@ deleteModel <- function(model_name, host){
   }
 
   url <- paste(host, "/model/", model_name, sep="")
-  invisible(DELETE(url))
+  invisible(httr::DELETE(url))
 }
