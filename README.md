@@ -36,6 +36,7 @@ Use Hadley's [devtools](https://github.com/hadley/devtools) package to install d
 	install.packages("devtools")
 	library(devtools)
 	install_github("devmacrile/openscoringr")
+```
 	
 	
 #### Example Usage  
