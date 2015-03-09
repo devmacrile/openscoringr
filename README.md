@@ -44,10 +44,10 @@ Use Hadley's [devtools](https://github.com/hadley/devtools) package to install d
 Using the openscoringr package to deploy a model, get information about the deployed model, score new data, and remove the deployed model.
 
 ```r
-  	library(openscoringr)
+	library(openscoringr)
 	library(randomForest)
 	data(iris)
-	
+
 	# Construct a dummy predictive model
 	intraining <- sample(1:nrow(iris), 125)
 	iris.train <- iris[intraining, ]
