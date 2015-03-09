@@ -32,7 +32,7 @@ which will start up the REST web service (at [http://localhost:8080/openscoring]
 
 #### Installing the R Package  
 Use Hadley's [devtools](https://github.com/hadley/devtools) package to install directly from GitHub:
-
+```r
 	install.packages("devtools")
 	library(devtools)
 	install_github("devmacrile/openscoringr")
@@ -40,15 +40,18 @@ Use Hadley's [devtools](https://github.com/hadley/devtools) package to install d
 	
 #### Example Usage  
 
-	library(openscoringr)
+Using the openscoringr package to deploy a model, get information about the deployed model, score new data, and remove the deployed model.
+
+```r
+  	library(openscoringr)
 	library(randomForest)
 	data(iris)
 	
 	# Construct a dummy predictive model
-	in.training <- sample(1:nrow(iris), 125)
-	iris.train <- iris[in.training, ]
-	iris.test <- iris[-in.training, ]
-	iris.rf <- randomForest(Species ~ ., data=iris)
+	intraining <- sample(1:nrow(iris), 125)
+	iris.train <- iris[intraining, ]
+	iris.test <- iris[-intraining, ]
+	iris.rf <- randomForest(Species ~ ., data=iris.train)
 	
 	# Deploy a model to openscoring
 	OPENSCORING.SERVER <- "http://localhost:8080/openscoring"
@@ -62,10 +65,11 @@ Use Hadley's [devtools](https://github.com/hadley/devtools) package to install d
 	getModelSchema("iris-rf", OPENSCORING.SERVER)
 	
 	# Score new data on deployed model
-	predictionss <- score(iris.test, "iris-rf", OPENSCORING.SERVER)
+	predictions <- score(iris.test, "iris-rf", OPENSCORING.SERVER)
 	
 	# Remove model from deployment
 	deleteModel("iris-rf", OPENSCORING.SERVER)
+```
 	
 	
 	
