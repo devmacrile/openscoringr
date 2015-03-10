@@ -1,6 +1,6 @@
 language: r
 
-# Be strict when checking our package
+# Be strict when checking package
 warnings_are_errors: true
 
 before_install:
@@ -12,8 +12,3 @@ before_install:
 # System dependencies for HTTP calling
 r_binary_packages:
  - testthat
-
-# Install the bleeding edge version of a package from github (eg to pick
-# up a not-yet-released bugfix)
-r_github_packages:
- - devmacrile/openscoringr
