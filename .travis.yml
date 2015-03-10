@@ -8,7 +8,8 @@ before_install:
   - cd openscoring
   - mvn clean install
   - java -jar openscoring-server/target/server-executable-1.2-SNAPSHOT.jar &
-  - sudo curl -X GET http://localhost:8080/openscoring/model
+  - sleep 3
+  - curl -X GET http://localhost:8080/openscoring/model
   
 # System dependencies for HTTP calling
 r_binary_packages:
