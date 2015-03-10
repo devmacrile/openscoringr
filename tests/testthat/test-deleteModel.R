@@ -1,7 +1,7 @@
 context("deleteModel")
 source('resources/deploy_iris-rf.R')
 
-OPENSCORING.SERVER <- "http://localhost:8080/openscoring"
+OPENSCORING.SERVER <- "http://localhost:8081/openscoring"
 
 test_that("Test that model can be removed from openscoring server", {
 	deleteModel("iris-rf", OPENSCORING.SERVER)

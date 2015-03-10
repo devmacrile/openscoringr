@@ -7,7 +7,7 @@ before_install:
   - git clone https://github.com/jpmml/openscoring.git
   - cd openscoring
   - mvn clean install
-  - java -jar openscoring-server/target/server-executable-1.2-SNAPSHOT.jar &
+  - java -jar openscoring-server/target/server-executable-1.2-SNAPSHOT.jar --host 127.0.0.1 --port 8081
   
 # System dependencies for HTTP calling
 r_binary_packages:
