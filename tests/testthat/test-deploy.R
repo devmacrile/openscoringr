@@ -3,12 +3,16 @@ context("deploy")
 
 # Test prerequisites/constants
 OPENSCORING.SERVER <- "http://localhost:8081/openscoring"
-load("resources/iris-rf.Rdata")  # Loads iris.rf randomForest object
+load("resources/IrisSVM.Rdata")  # Loads IrisSVM svm object
+load("resources/IrisLinearModel.Rdata")  # Loads glm object
 
 
 test_that("Test that model can be deployed to openscoring server", {
-	deploy(iris.rf, "iris-rf-2", OPENSCORING.SERVER)
-	expect_equal(isDeployed("iris-rf-2", OPENSCORING.SERVER), TRUE)
+	deploy(IrisSVM, "IrisSVM", OPENSCORING.SERVER)
+	expect_equal(isDeployed("IrisSVM", OPENSCORING.SERVER), TRUE)
+	
+	deploy(IrisLinearModel, "IrisLinearModel", OPENSCORING.SERVER)
+	expect_equal(isDeployed("IrisLinearModel", OPENSCORING.SERVER), TRUE)
 })
 
 

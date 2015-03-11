@@ -23,10 +23,10 @@ score <- function(data, model_name, host){
   }
 
   # Get model schema to ensure features are present in new data
-  schema <- getModelSchema(model_name, host)
-  active_fields <- unlist(schema$activeFields)
+  mdl_summary <- getModelSchema(model_name, host)
+  active_fields <- sapply(mdl_summary$schema$activeFields, function(x) x$id)
   clnms <- colnames(data)
-  if(!setequal(clnms, active_fields)){
+  if(!all(active_fields %in% clnms)){
     stop(paste("The 'data' field names do not match the activeFields of the model!"))
   }
 

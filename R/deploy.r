@@ -11,10 +11,12 @@
 #' @param save indicates whether to keep the generated pmml or not
 #' @export
 #' @examples
+#' \dontrun{
 #' server <- "http://localhost:8080/openscoring"
 #' data(iris)
 #' mymodel <- kmeans(iris[,-5], 3, iter.max=20, nstart=5)
 #' deploy(mymodel, "Example", server)
+#' }
 deploy <- function(model, model_name, host, save=FALSE){
   if(missing(model)){
     stop("You must provide a model in order to deploy!")

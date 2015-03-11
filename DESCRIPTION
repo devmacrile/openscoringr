@@ -1,8 +1,8 @@
 Package: openscoringr
 Title: R wrapper for the openscoring REST API
 Version: 0.1
-Author: "Devin Riley <rileyde@umich.edu> [aut, cre]"
-Maintainer: "Devin Riley <rileyde@umich.edu>"
+Author: Devin Riley <rileyde@umich.edu> [aut, cre]
+Maintainer: Devin Riley <rileyde@umich.edu>
 Description: Enables the ability to deploy, manage, and score models
     in R via the openscoring REST API.
 Depends: 
@@ -19,4 +19,3 @@ LazyData: true
 Suggests: 
     knitr,
     testthat
-VignetteBuilder: knitr

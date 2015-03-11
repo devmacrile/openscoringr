@@ -29,12 +29,8 @@ getModels <- function(host, data.type="data.frame"){
     # Already in list format
     return(models)
   }
-
-  model.count <- length(models)
-  id.index <- seq(1, 2*model.count - 1, by=2)
-  summ.idx <- seq(2, 2*model.count, by=2)
-  mdl.char <- unlist(models)
-  df <- data.frame(mdl.char[id.index], mdl.char[summ.idx])
+  
+  df <- do.call(rbind.data.frame, models[[1]])
   colnames(df) <- c("Id", "Summary")
   df
 }
