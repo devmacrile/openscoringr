@@ -45,31 +45,31 @@ Using the openscoringr package to deploy a model, get information about the depl
 
 ```r
 	library(openscoringr)
-	library(randomForest)
+	library(e1071)
 	data(iris)
 
 	# Construct a dummy predictive model
 	intraining <- sample(1:nrow(iris), 125)
 	iris.train <- iris[intraining, ]
 	iris.test <- iris[-intraining, ]
-	iris.rf <- randomForest(Species ~ ., data=iris.train)
+	iris.svm <- svm(Species ~ ., data=iris.train)
 	
 	# Deploy a model to openscoring
 	OPENSCORING.SERVER <- "http://localhost:8080/openscoring"
-	deploy(iris.rf, "iris-rf", OPENSCORING.SERVER)
+	deploy(iris.svm, "iris-svm", OPENSCORING.SERVER)
 	
 	# Get a list of deployed models
-	getModels(openscoring.server)  # Will have 'iris-rf' deployed
-	isDeployed("iris-rf", OPENSCORING.SERVER)  # Will return TRUE
+	getModels(OPENSCORING.SERVER)  # Will have 'iris-svm' deployed
+	isDeployed("iris-svm", OPENSCORING.SERVER)  # Will return TRUE
 	
 	# Get schema for individual model
-	getModelSchema("iris-rf", OPENSCORING.SERVER)
+	getModelSchema("iris-svm", OPENSCORING.SERVER)
 	
 	# Score new data on deployed model
-	predictions <- score(iris.test, "iris-rf", OPENSCORING.SERVER)
+	predictions <- score(iris.test, "iris-svm", OPENSCORING.SERVER)
 	
 	# Remove model from deployment
-	deleteModel("iris-rf", OPENSCORING.SERVER)
+	deleteModel("iris-svm", OPENSCORING.SERVER)
 ```
 	
 	
