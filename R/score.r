@@ -32,7 +32,7 @@ score <- function(data, model_name, host){
 
   # Jsonify the new data
   request <- specialJSON(data)
-  if(!validate(request)){
+  if(!jsonlite::validate(request)){
     stop("Not proper JSON!")
   }
   

@@ -28,8 +28,7 @@ deploy <- function(model, model_name, host, save=FALSE){
     host <- substr(host, 0, nchar(host) - 1)
   }
 
-  pmml.err.msg <- "Could not convert your model format to valid PMML.  Please
-  ensure you are using a supported model type."
+  pmml.err.msg <- "Could not convert your model format to valid PMML.  Please ensure you are using a supported model type."
   tryCatch({model_rep <- pmml::pmml(model)},
            error = function(e){ stop(pmml.err.msg) },
            exception = function(x){ stop(pmml.err.msg) }
